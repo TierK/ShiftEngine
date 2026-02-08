@@ -84,7 +84,7 @@ The system relies on a central `CONFIG` object. Note that the ID is abstracted f
 ```javascript
 const CONFIG = {
   VERSION: "0.14",
-  /** * SPREADSHEET_ID is hidden for security. 
+  /** * SPREADSHEET_ID and FORM_URL are hidden for security. 
    * To request access or a template of SPREADSHEET or/end GOOGLE_FORM, contact: kimbfsd@gmail.com
    */
   SPREADSHEET_ID:'YOUR_ SPREADSHEET_ID',
