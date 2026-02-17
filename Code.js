@@ -4,7 +4,7 @@
  * Features: Algorithmic shift balancing, real-time conflict validation,
  * and automated export of schedules to a standalone spreadsheet
  * including generated charts and analytics.
- * * @version 0.14
+ * * @version 0.15.2
  * @developer [TierK](https://github.com/TierK)
 * @license MIT
  * Copyright (c) 2026 Kim
@@ -12,7 +12,7 @@
 /** --- GLOBAL CONFIGURATION --- */
 
 const CONFIG = {
-  VERSION: "0.14",
+  VERSION: "0.15.2",
   SPREADSHEET_ID: '',
   FORM_URL: "",
   EMPTY_CELL: 'אין אילוץ',
@@ -574,7 +574,7 @@ function renderTextBox(rangeNotation, message, themeItem) {
     .setBorder(true, true, true, true, null, null, themeItem.border, SpreadsheetApp.BorderStyle.SOLID_MEDIUM);
 }
 
-/** * --- ANALYTICS ENGINE v0.14 ---
+/** * --- ANALYTICS ENGINE v0.15.2 ---
  * Refactored to handle dynamic row positioning and invisible markers.
  */
 
