@@ -1,4 +1,4 @@
-# ShiftEngine v0.14
+# ShiftEngine
 
 **ShiftEngine** is a robust automation solution for managing 14-day shift cycles within Google Workspace. Designed for high-reliability environments, it handles everything from constraint collection to algorithmic assignment and dark-mode analytics.
 
