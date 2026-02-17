@@ -1,13 +1,9 @@
 /**
- * --- ShiftEngine v0.15.2 ---
+ * --- ShiftEngine v0.15.3 ---
  * Automated engine for bi-weekly labor scheduling.
- * * * New in v0.15.2:
- * - Refactored project structure: decoupled CONFIG from logic.
- * - Centralized DateService: synced date formatting between Schedule and Export.
- * - UI Automation: Dynamic random pastel coloring for Responses sheet (sync with Export style).
- * - Global Validation Cleanup: Automated removal of "Invalid" red flags.
- * - Code Standardization: Strict English documentation/comments.
- * Final UI adjustment: Fixed copyright position and resolved merging conflicts.
+ * * * New in v0.15.3:
+ * - Ensure Responses sheet has DAYS_HEADER in row 1 (C-I and J-P)
+ * - Update getRandomPastelHex() algorithm to support a wider range of colors
  * * @developer TierK
  * @license MIT
  * Copyright (c) 2026 Kim
@@ -15,7 +11,7 @@
 
 /** --- GLOBAL CONFIGURATION --- */
 const CONFIG = {
-  VERSION: "0.15.2",
+  VERSION: "0.15.3",
   SPREADSHEET_ID: '',
   FORM_URL: "",
   EMPTY_CELL: 'אין אילוץ',
@@ -187,6 +183,7 @@ function sendWeeklyEmails() {
   if (maxRows > 1) {
     respSheet.deleteRows(2, maxRows - 1);
   }
+  ensureResponsesHeader();
   PropertiesService.getScriptProperties().setProperty('emailsSent', 'true');
   applyGreenIfAllOk();
   Browser.msgBox("✨ המיילים נשלחו!");
@@ -441,7 +438,7 @@ function clearAllValidationErrors() {
 function formatResponsesUI() {
   const sheet = getSheet(CONFIG.SHEETS.RESPONSES);
   if (!sheet) return;
-
+  ensureResponsesHeader();
   const lastCol = sheet.getLastColumn();
   const lastRow = sheet.getLastRow();
   const maxRows = sheet.getMaxRows();
@@ -594,6 +591,8 @@ function cleanupDuplicateResponses() {
         .setValues(finalData)
         .setFontFamily(CONFIG.THEME.FONT);
 
+  ensureResponsesHeader();
+
   if (finalData.length > 0) {
     sheet.getRange(2, 1, finalData.length, header.length) // используем header.length для точности
          .setValues(finalData)
@@ -610,9 +609,16 @@ function shuffleArray(array) {
 }
 
 function getRandomPastelHex() {
-  const h = Math.floor(Math.random() * 360);
-  const s = Math.floor(Math.random() * 20) + 70;
-  const l = Math.floor(Math.random() * 10) + 75;
+
+  const GOLDEN_RATIO = 0.618033988749895;
+
+  pastelHue += GOLDEN_RATIO;
+  pastelHue %= 1;
+
+  const h = Math.floor(pastelHue * 360);
+  const s = 60 + Math.random() * 20;
+  const l = 75 + Math.random() * 10;
+
   return hslToHex(h, s, l);
 }
 
@@ -989,4 +995,41 @@ function updateValidationWithSafeValue(cell, pool, selectedName) {
     .setAllowInvalid(true) // Key: allows manual entry without blocking
     .build();
   updateValidationWithSafeValue(cell, pool, selected);
+}
+
+/**
+ * Ensure Responses sheet has DAYS_HEADER in row 1 (C-I and J-P),
+ * bold + color #666666 — always present (creates columns if needed).
+ */
+function ensureResponsesHeader() {
+  const sheet = getSheet(CONFIG.SHEETS.RESPONSES);
+  if (!sheet) return;
+
+  // Ensure we have at least 16 columns (so C..P exist)
+  const minCols = 16;
+  const currentCols = sheet.getMaxColumns();
+  if (currentCols < minCols) {
+    sheet.insertColumnsAfter(currentCols, minCols - currentCols);
+  }
+
+  const days = CONFIG.CONSTANTS.DAYS_HEADER; // array of 7 names
+
+  // Columns: C=3 .. I=9  and J=10 .. P=16
+  const leftRange = sheet.getRange(1, 3, 1, 7);   // C..I
+  const rightRange = sheet.getRange(1, 10, 1, 7); // J..P
+
+  // Put values (single-row arrays) and style
+  leftRange.setValues([days])
+           .setFontWeight("bold")
+           .setFontColor("#666666")
+           .setHorizontalAlignment("center")
+           .setVerticalAlignment("middle")
+           .setWrap(false);
+
+  rightRange.setValues([days])
+            .setFontWeight("bold")
+            .setFontColor("#666666")
+            .setHorizontalAlignment("center")
+            .setVerticalAlignment("middle")
+            .setWrap(false);
 }
