@@ -67,7 +67,7 @@ The engine uses `cleanupDuplicateResponses()` to ensure that if an employee subm
     * Night Shift Analytics (Purple Theme)
     * Shabbat Distribution (Gold Theme)
 
-![Analytics Dashboard](screenshots/analytic.jpg)
+![Analytics Dashboard](screenshots/analytic.png)
 
 ---
 
