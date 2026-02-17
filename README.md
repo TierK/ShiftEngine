@@ -6,8 +6,8 @@
 [![Developer: TierK](https://img.shields.io/badge/Developer-TierK-blue)](https://github.com/TierK)
 
 ## 📌 Latest Version
-- **Current version:** `v0.15.2`
-- Synced with Apps Script deployment `v0.15.2`.
+- **Current version:** `v0.16.1`
+- Synced with Apps Script deployment `v0.16.1`.
 - If GitHub still shows older content, refresh branch and pull latest commits.
 
 ---
@@ -88,7 +88,7 @@ The system relies on a central `CONFIG` object. Note that the ID is abstracted f
 
 ```javascript
 const CONFIG = {
-  VERSION: "0.15.2",
+  VERSION: "0.16.1",
   /** * SPREADSHEET_ID and FORM_URL are hidden for security. 
    * To request access or a template of SPREADSHEET or/end GOOGLE_FORM, contact: kimbfsd@gmail.com
    */
@@ -99,3 +99,63 @@ const CONFIG = {
 ````
 ## 📄 License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🗂 Local Module Structure (for clasp workflow)
+
+The codebase is now split into logical folders locally:
+
+- `core/`
+- `triggers/`
+- `services/`
+- `ui/`
+- `utils/`
+- `main.gs`
+
+### How to see this in Apps Script editor
+Google Apps Script editor does **not** preserve local folder hierarchy as real folders in the UI. It displays files as a flat list.
+
+To work with this structure:
+1. Develop locally in this repo with folders.
+2. Sync with Apps Script via clasp (`clasp push`).
+3. In the Apps Script web editor you will see the files, but without folder tree nesting.
+
+If you want clear grouping inside Apps Script UI, use filename prefixes (for example: `services.schedule.service.gs`, `ui.menu.ui.gs`) — this project already uses that style.
+
+
+## ▶️ Как запустить и посмотреть локально (до публикации)
+
+Ниже быстрый путь, чтобы сначала проверить всё локально, а потом отправить в Apps Script:
+
+1. **Установить Node.js** (если ещё не установлен).
+2. **Установить clasp**:
+   ```bash
+   npm i -g @google/clasp
+   ```
+3. **Авторизоваться в Google**:
+   ```bash
+   clasp login
+   ```
+4. **Привязать проект к вашему Apps Script** (в корне проекта создать `.clasp.json`):
+   ```json
+   {
+     "scriptId": "ВАШ_SCRIPT_ID",
+     "rootDir": "."
+   }
+   ```
+   `scriptId` берётся из Apps Script Project Settings.
+5. **Локальная проверка синтаксиса** (без деплоя):
+   ```bash
+   node -e 'const fs=require("fs");const cp=require("child_process");const files=cp.execSync("find core triggers services ui utils -name \"*.gs\" | sort").toString().trim().split("\n");for(const f of files){new Function(fs.readFileSync(f,"utf8"));}console.log("OK",files.length)'
+   ```
+6. **Отправить в Apps Script**:
+   ```bash
+   clasp push
+   ```
+7. **Открыть в браузере редактор Apps Script**:
+   ```bash
+   clasp open
+   ```
+
+После `clasp push` вы увидите все `.gs` файлы в редакторе Apps Script (плоским списком, без реальных папок).

@@ -1,0 +1,3 @@
+function getMainMenuName() {
+  return 'פקודות✨';
+}
