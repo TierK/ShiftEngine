@@ -5,6 +5,11 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Developer: TierK](https://img.shields.io/badge/Developer-TierK-blue)](https://github.com/TierK)
 
+## 📌 Latest Version
+- **Current version:** `v0.15.2`
+- Synced with Apps Script deployment `v0.15.2`.
+- If GitHub still shows older content, refresh branch and pull latest commits.
+
 ---
 
 ## 🛠 Setup & Access
@@ -83,7 +88,7 @@ The system relies on a central `CONFIG` object. Note that the ID is abstracted f
 
 ```javascript
 const CONFIG = {
-  VERSION: "0.14",
+  VERSION: "0.15.2",
   /** * SPREADSHEET_ID and FORM_URL are hidden for security. 
    * To request access or a template of SPREADSHEET or/end GOOGLE_FORM, contact: kimbfsd@gmail.com
    */
