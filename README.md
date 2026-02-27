@@ -100,7 +100,7 @@ Dynamic Exports
 ![Main Schedule](screenshots/Schedule.png)
 
 ### Analytics Dashboard
-![Analytics](screenshots/analytic.jpg)
+![Analytics](screenshots/analytic.png)
 
 ### Integrated Command Center
 ![Custom Menu](screenshots/commands.png)
