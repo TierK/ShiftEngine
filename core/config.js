@@ -1,5 +1,5 @@
 const CONFIG = {
-  VERSION: '0.16.2',
+  VERSION: '0.16.3',
   SPREADSHEET_ID: '',
   FORM_URL: '',
   MAIL_FORM_URL: '',
