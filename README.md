@@ -97,7 +97,7 @@ Dynamic Exports
 ## 📸 Product Interface
 
 ### Main Scheduling Grid
-![Main Schedule](screenshots/Schedule.png)
+![Main Schedule](screenshots/Screenshot 2026-03-09 215235.png)
 
 ### Analytics Dashboard
 ![Analytics](screenshots/analytic.png)
