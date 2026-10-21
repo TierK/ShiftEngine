@@ -23,7 +23,7 @@
 
 ---
 
-##  The Universal Scheduling Nightmare
+## 😫 The Universal Scheduling Nightmare
 
 Every team lead, operations manager, and dispatcher knows this weekly drain:
 - ⏳ **Hours lost in spreadsheets**: Manually juggling overlapping requests, vacation days, and preferences across dozens of employees.
@@ -37,88 +37,12 @@ Every team lead, operations manager, and dispatcher knows this weekly drain:
 
 ## ⚡ The ShiftEngine Pipeline: From Collection to Publication
 
-ShiftEngine is a **commercial-ready, constraint-aware scheduling engine** designed for:
-
-- 📞 Call Centers & Customer Support  
-- 🛡 Security & Dispatch Units  
-- 🏥 Medical & Emergency Teams  
-- 🏢 Enterprise Operations  
-
-It provides **automation, analytics, and real-time conflict detection**, transforming workforce management into a predictable, optimized process.
-
----
-
-## 🧩 Core Features
-
-- **Constraint-Based Assignment**  
-  Prioritizes rare availability and balances workload targets.
-
-- **Conflict Prevention Engine**  
-  Detects and prevents double shifts, rest-time violations, and night-to-morning errors.
-
-- **Dynamic Analytics Dashboard**  
-  Real-time visualization of workloads, night shifts, and Shabbat distribution.
-
-- **Automated Exports**  
-  Generates visually distinct schedule files with unique color themes.
-
-- **Dark Mode Friendly**  
-  Optimized UI for both light and dark environments.
-
-- **Google Workspace Integration**  
-  Works directly with Forms & Sheets, using event triggers and Apps Script automation.
-
----
-
-## 🏗 System Architecture
-
-ShiftEngine consists of 4 logical layers:
-
-1. **Data Ingress Layer** – Google Forms → Responses cleanup  
-2. **Validation Engine** – Rule enforcement & conflict detection  
-3. **Assignment Core** – Rare availability & target balancing  
-4. **Analytics & Export Layer** – Dashboard & themed exports  
-
-**Flow Diagram:**
-
-Google Form
-⬇
-Responses Sheet
-⬇
-ShiftEngine Core
-⬇
-Validation Engine
-⬇
-Final Schedule + Analytics Dashboard
-⬇
-Dynamic Exports
-
----
-
-## 📸 Product Interface
-
-### Main Scheduling Grid
-![Main Schedule](screenshots/Scheduling.png)
-
-### Analytics Dashboard
-![Analytics](screenshots/analytic.png)
-
-### Integrated Command Center
-![Custom Menu](screenshots/commands.png)
-
-### Staff Configuration
-![Staff Sheet](screenshots/Staff.png)
-
-### Google Form Interface
-![Form UI](screenshots/form.png)
-
----
-
-## 🛠 Deployment & Setup
-
-1. Clone this repository:
-```bash
-git clone https://github.com/TierK/ShiftEngine.git
+```mermaid
+flowchart LR
+    A["📧 1. Automated<br/>Email Dispatch"] --> B["📊 2. Live Response<br/>Tracker"]
+    B --> C["🧠 3. Constraint-Driven<br/>Auto-Assignment"]
+    C --> D["🛡️ 4. Live Guardrails &<br/>Smart Dropdowns"]
+    D --> E["🏆 5. One-Click<br/>Export & Publish"]
 ```
 
 ---
@@ -165,7 +89,7 @@ Click **"Update Schedule"**, and the constraint engine builds the roster in seco
 * 🤝 **Fairness by Design**: Equitably distributes night shifts, weekends, and high-demand slots across the entire roster.
 
 <p align="center">
-  <img src="screenshots/Schedule.jpg" width="750" alt="Main Scheduling Grid"/>
+  <img src="screenshots/Scheduling.png" width="750" alt="Main Scheduling Grid"/>
 </p>
 
 ---
@@ -282,5 +206,5 @@ Turnkey integration packages, enterprise master templates, and custom adaptation
 </p>
 
 <p align="center">
-  Built with 💜 by TierK
+  Engineered with care for high-performing teams • <b>TierK</b>
 </p>
