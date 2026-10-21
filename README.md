@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/logo_big_SE.png" width="620" alt="ShiftEngine Banner"/>
+  <img src="assets/logo_big_SE.png" width="460" alt="ShiftEngine Banner"/>
 </p>
 
 <p align="center">
@@ -19,6 +19,10 @@
 
 <p align="center">
   ⭐ <i><b>Proven in Production:</b> Already powering operations across teams in a multi-national global enterprise.</i>
+</p>
+
+<p align="center">
+  <img src="screenshots/Scheduling.png" width="820" alt="ShiftEngine Live Interface: Real-time Conflict Guardrails & Instant Ready State"/>
 </p>
 
 ---
